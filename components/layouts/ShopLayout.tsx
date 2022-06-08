@@ -28,7 +28,6 @@ export const ShopLayout: FC<Props> = ({
     setIsSideMenuOpen(false);
   };
 
-  console.log(isSideMenuOpen);
   return (
     <>
       <Head>

@@ -1,11 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 
 import { ShopLayout } from "../../components/layouts";
 import { IProduct } from "../../interfaces";
+import { CartContext } from "../../context/CartContext";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState<IProduct>();
+
+  const { cart, setCart } = useContext(CartContext);
+
+  // Añadiendo al carrito
+
+  const addToCart = useCallback(
+    (product: IProduct) => {
+      const newCart = [...cart, product];
+      setCart(newCart);
+    },
+    [cart, setCart]
+  );
 
   const id =
     typeof window !== "undefined" && window.location.pathname.split("/")[2];
@@ -45,7 +58,11 @@ const ProductDetail = () => {
             </Typography>
 
             {/* Agregar al carrito */}
-            <Button color="secondary" className="circular-btn">
+            <Button
+              color="secondary"
+              className="circular-btn"
+              onClick={() => addToCart(product)}
+            >
               Agregar al carrito
             </Button>
 
