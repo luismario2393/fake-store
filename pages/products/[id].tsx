@@ -13,7 +13,7 @@ const ProductDetail = () => {
   // Añadiendo al carrito
 
   const addToCart = useCallback(
-    (product: IProduct) => {
+    (product: IProduct | undefined) => {
       const newCart = [...cart, product];
       setCart(newCart);
     },
