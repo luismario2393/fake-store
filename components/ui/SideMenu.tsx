@@ -1,6 +1,4 @@
-import { FC, useContext, useState } from "react";
-import NextLink from "next/link";
-import { ProductContext } from "../../context/ProductContext";
+import { FC, useContext } from "react";
 import {
   Badge,
   Box,
@@ -20,7 +18,6 @@ import {
   DeleteOutlined,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
-import { ItemCounter } from "./ItemCounter";
 import { CartContext } from "../../context";
 import { IProduct } from "../../interfaces";
 
@@ -30,10 +27,7 @@ interface Props {
 }
 
 export const SideMenu: FC<Props> = ({ open, onClose }) => {
-  const [counter, setCounter] = useState(0);
   const { cart, setCart } = useContext(CartContext);
-
-  console.log(cart);
 
   // eliminar del carrito
   const removeFromCart = (product: IProduct) => {
@@ -61,7 +55,11 @@ export const SideMenu: FC<Props> = ({ open, onClose }) => {
         <List>
           <ListItem>
             <ListItemIcon>
-              <Badge badgeContent={2} color="secondary" sx={{ mr: 2 }}>
+              <Badge
+                badgeContent={cart.length}
+                color="secondary"
+                sx={{ mr: 2 }}
+              >
                 <ShoppingCartOutlined />
               </Badge>
               <ListItemText
