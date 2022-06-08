@@ -10,8 +10,6 @@ const ProductDetail = () => {
 
   const { cart, setCart } = useContext(CartContext);
 
-  // Añadiendo al carrito
-
   const addToCart = useCallback(
     (product: IProduct | undefined) => {
       const newCart = [...cart, product];
@@ -49,7 +47,6 @@ const ProductDetail = () => {
 
         <Grid item xs={12} sm={5} display="flex" alignItems={"center"}>
           <Box display="flex" flexDirection="column" gap={2}>
-            {/* titulos */}
             <Typography variant="h1" component={"h1"}>
               {product?.title}
             </Typography>
@@ -57,7 +54,6 @@ const ProductDetail = () => {
               ${product?.price}
             </Typography>
 
-            {/* Agregar al carrito */}
             <Button
               color="secondary"
               className="circular-btn"

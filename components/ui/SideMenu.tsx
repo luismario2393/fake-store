@@ -29,7 +29,6 @@ interface Props {
 export const SideMenu: FC<Props> = ({ open, onClose }) => {
   const { cart, setCart } = useContext(CartContext);
 
-  // eliminar del carrito
   const removeFromCart = (product: IProduct) => {
     const newCart = cart.filter((item: IProduct) => item.id !== product.id);
     setCart(newCart);
@@ -40,7 +39,7 @@ export const SideMenu: FC<Props> = ({ open, onClose }) => {
     0
   );
 
-  const tax = subtotal * 0.15;
+  const tax = subtotal * 0.19;
 
   const total = subtotal + tax;
 
@@ -140,7 +139,7 @@ export const SideMenu: FC<Props> = ({ open, onClose }) => {
 
             <ListItem>
               <Grid item xs={6}>
-                <Typography>Impuesto (15%)</Typography>
+                <Typography>Iva (19%)</Typography>
               </Grid>
               <Grid item xs={6} display="flex" justifyContent={"end"}>
                 <Typography>${tax}</Typography>

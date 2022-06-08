@@ -57,8 +57,6 @@ export const ShopLayout: FC<Props> = ({
         {children}
       </main>
 
-      {/* Footer */}
-
       <footer
         style={{
           maxHeight: "100px",
